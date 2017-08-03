@@ -1,0 +1,10 @@
+---
+# tasks file for ansible-role-crashplan-conf
+- stat: path=/var/lib/crashplan/.ui_info
+  register: crashplan_config_file
+- name: crashplan config
+  lineinfile: dest=/var/lib/crashplan/.ui_info
+              regexp='^{{ crashplan_port }}'
+              state=present
+              line='{{ crashplan_port }},{{ crashplan_key }},{{ crashplan_ip }}'
+  when: crashplan_config_file.stat.exists == True

@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-role-crashplan-conf
+crashplan_port: 4243
+crashplan_ip: 127.0.0.1
